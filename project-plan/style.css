@@ -1,0 +1,1090 @@
+/*   
+Theme Name: Project Plan
+Theme URI: http://lexblog.com
+Description: A style-free theme to get you started on an HTML5-based Wordpress theme of your own.
+Author: Joshua Lynch
+Author URI: http://joshualyn.ch
+Version: 1
+*/
+
+/*
+	HTML5 Reset Wordpress Theme :: style.css
+	----------------------------------------------------------
+	We have learned much from/been inspired by/taken code where offered from:
+	
+	Eric Meyer					:: http://ericmeyer.com
+	HTML5 Doctor				:: http://html5doctor.com
+	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+	
+	Special thanks: The Wordpress theme owes its start to an empty theme authored 
+		by Chris Coyier & Jeff Starr: http://digwp.com
+	
+-------------------------------------------------------------------------------*/
+
+/* Defaults
+-------------------------------------------------------------------------------*/
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}									
+
+article, aside, figure, footer, header, hgroup, nav, section {display: block;}
+
+/* Responsive images and other embedded objects
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites, like, say for Google Maps custom placemarkers. 
+   There has been a report of problems with standard Google maps as well, but we haven't been able to duplicate or diagnose the issue. */
+img,
+object,
+embed {max-width: 100%;}
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {overflow-y: scroll; overflow-x: hidden;}
+
+/* we use a lot of ULs that aren't bulleted. 
+	don't forget to restore the bullets within content. */
+ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before, 
+blockquote:after, 
+q:before, 
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+/* tables still need cellspacing="0" in the markup */
+table {border-collapse: collapse; border-spacing: 0;}
+th {font-weight: bold; vertical-align: bottom;}
+td {font-weight: normal; vertical-align: top;}
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+	white-space: pre; /* CSS2 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom; *vertical-align: baseline;}
+.ie6 input {vertical-align: text-bottom;}
+
+select, input, textarea {font: 99% sans-serif;}
+
+table {font-size: inherit; font: 100%;}
+ 
+/* Accessible focus treatment
+	people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active {outline: none;}
+
+small {font-size: 85%;}
+
+strong, th {font-weight: bold;}
+
+td, td img {vertical-align: top;} 
+
+/* Make sure sup and sub don't screw with your line-heights
+	gist.github.com/413930 */
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+/* hand cursor on clickable elements */
+.clickable,
+label, 
+input[type=button], 
+input[type=submit], 
+button {cursor: pointer;}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {margin: 0;}
+
+/* make buttons play nice in IE */
+button {width: auto; overflow: visible;}
+ 
+/* scale images in IE7 more attractively */
+.ie7 img {-ms-interpolation-mode: bicubic;}
+
+/* prevent BG image flicker upon hover */
+.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+
+/* Tags
+-------------------------------------------------------------------------------*/
+
+body, 
+select, 
+input, 
+textarea {
+	color: #333333;
+}
+
+a {
+	color: #369;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
+::-moz-selection{background: yellow; color: #333; text-shadow: none;}
+::selection {background: yellow; color: #333; text-shadow: none;} 
+
+/*	j.mp/webkit-tap-highlight-color */
+a:link {-webkit-tap-highlight-color: #ec3527;} 
+
+ins {background-color: yellow; color: #333; text-decoration: none;}
+mark {background-color: yellow; color: #333; font-style: italic; font-weight: bold;}
+
+@font-face {
+    font-family: 'PictosRegular';
+    src: url('fonts/pictos/pictos-web-webfont.eot');
+    src: url('fonts/pictos/pictos-web-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/pictos/pictos-web-webfont.woff') format('woff'),
+         url('fonts/pictos/pictos-web-webfont.ttf') format('truetype'),
+         url('fonts/pictos/pictos-web-webfont.svg#PictosRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.button {
+   	font-size: 1em;
+	text-decoration: none;
+	padding: 5px 10px;
+	color: #FFF;
+	background: #369;
+	font-weight: bold;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: none;
+	margin: 20px 0;
+}
+   
+.button:hover {
+	background: #333;
+	color: #FFF;
+	text-decoration: none;
+}
+   
+.button:active {
+   	position: relative;
+   	top: 1px;
+}
+
+#single-milestone .button,
+#single-doc .button {
+	font-size: .8em;
+}
+
+#page-wrap h1,
+#page-wrap h2,
+#page-wrap h3,
+#page-wrap h4,
+#page-wrap h5,
+#page-wrap h6 {
+	margin-bottom: 20px;
+	font-weight: normal;
+}
+
+#page-wrap h1 {
+	font-size: 2.5em;
+}
+
+#page-wrap h2 {
+	font-size: 2em;
+}
+
+#page-wrap h3 {
+	font-size: 1.8em;
+}
+
+#page-wrap h4 {
+	font-size: 1.6em;
+}
+
+#page-wrap h5 {
+	font-size: 1.4em;
+}
+
+#page-wrap h6 {
+	font-size: 1.2em;
+}
+
+#page-wrap p {
+	font-size: 1.3em;
+	line-height: 1.3;
+	margin-bottom: 20px;
+}
+
+#page-wrap li {
+	margin-bottom: 5px;
+	font-size: 1.2em;
+}
+
+#page-wrap li li {
+	font-size: 1em;
+}	
+
+#page-wrap ol {
+	list-style-type: decimal;
+	margin: 0 0 20px 50px;
+}
+
+#page-wrap ol ol {
+	list-style-type: lower-alpha;
+	margin: -15px 0 5px 30px;
+}
+
+#page-wrap ul {
+	list-style-type: disc;
+	margin: 0 0 20px 50px;
+}
+
+#page-wrap ul ul {
+	list-style-type: circle;
+	margin: 5px 0 5px 30px;
+}
+
+#page-wrap blockquote {
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	font-size: 1em;
+	padding: 0 40px 0 50px;
+	border-left: 5px solid #333;
+	position: relative;
+}
+
+#page-wrap code  {
+	color: #386b9e;
+	font-family: "Courier New", Courier, monospace;
+}
+
+#page-wrap pre  {
+	color: #386b9e;
+	font-family: "Courier New", Courier, monospace;
+	margin-bottom: 20px;
+}
+
+
+/* Structure
+-------------------------------------------------------------------------------*/
+
+html {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 62.5%;
+	font-family: 'Droid Sans', Arial, Helvetica, sans-serif;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+#global-header {
+	height: 70px;
+	background: url(images/bg-grid.gif) repeat;
+}
+
+#global-footer {
+	height: 70px;
+	background: url(images/bg-grid.gif) repeat;
+	margin-top: 50px;
+}
+
+#page-wrap {
+	width: 1000px; 
+	margin: 0 auto;
+	position: relative;
+}
+
+/* Clearing floats for modern browsers */
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+
+.cf:after {
+    clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+    zoom:1;
+}
+
+/* Header
+-------------------------------------------------------------------------------*/
+
+#logo a {
+	float: left;
+	position: relative;
+	margin: 10px 10px 0 50px;
+	display: block;
+	text-indent: -5000em;
+}
+
+#title {
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	font-style: italic;
+	font-weight: normal;
+	font-size: 1.6em;
+	position: relative;
+	float: left;
+	margin-top: 25px;
+}
+
+/* Navigation */
+
+.dropdown  {
+	width: 215px;
+	position: relative;
+	float: right;
+	margin: 20px 50px 0 0;
+}
+
+.navigate-header  {
+	width: 210px;
+	height: 22px;
+	background: url(images/dropdown-bg.png) no-repeat;
+	padding: 8px 0 0 10px;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #fff;
+}
+
+.navigate  {
+	z-index: 1000;
+	background: #333;
+	width: 220px;
+	margin: -3px auto 0;
+	-moz-border-radius-bottomleft: 3px;
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	position: absolute;
+	display: none; /* To avoid content flash on page load */
+}
+
+.navigate ul  {
+	list-style: none;
+	padding-bottom: 10px;
+}
+
+.navigate ul li a {
+	padding: 5px 10px 5px 20px;
+}
+
+.navigate ul li a,
+.navigate ul li strong {
+	display: block;
+	font-size: 1.2em;
+	color: #fff;
+}
+
+.navigate ul li strong {
+	padding: 10px 10px 5px;
+}
+
+/* Footer
+-------------------------------------------------------------------------------*/
+
+#top {
+	position: relative;
+	float: right;
+	right: 50px;
+	bottom: 17px;
+	z-index: 100;
+	padding: 0 5px 3px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #a5a5a5;
+}
+
+#top:before {
+	content: "{";
+	font-family: 'PictosRegular';
+	padding-right: 3px;
+	line-height: 1;
+}
+
+#top:hover {
+	color: #333;
+}
+
+.single-pplan_designs #top:hover {
+	color: #fff;
+	background-color: #369;
+	-webkit-border-top-left-radius: 2px;
+	-webkit-border-top-right-radius: 2px;
+	-moz-border-radius-topleft: 2px;
+	-moz-border-radius-topright: 2px;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+}
+
+#author-meta {
+	margin: 0 auto;
+	width: 600px;
+}
+
+#global-footer p {
+	font-size: 1.3em;
+	text-align: center;
+	padding-top: 15px;
+}
+
+.single-pplan_designs #global-footer {
+	margin-top: 0;
+}
+
+/* AddThis hide email icon */
+.at15t_email {
+	display: none;
+}
+
+/* Project or Milestones or Docs
+-------------------------------------------------------------------------------*/
+
+#project,
+#single-milestone,
+#single-doc,
+#project-docs {
+	margin: 50px 0;
+}
+
+.single-pplan_projects #global-footer {
+	margin-top: 50px;
+}
+
+#single-milestone,
+#single-doc {
+	width: 720px;
+	position: relative;
+	float: left;
+}
+
+#project-title,
+#milestone-title,
+#doc-title {
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	font-size: 2.8em;
+	margin-bottom: 20px;
+}
+
+#intro p,
+#single-milestone p,
+#single-doc p {
+	font-size: 1.6em;
+	line-height: 1.6;
+}
+
+#intro li,
+#single-milestone li,
+#single-doc li {
+	font-size: 1.6em;
+}
+
+#intro .first {
+	margin-right: 40px;
+}
+
+.alert,
+#gse_comments_message /* for use with the Gravatar Signup Encouragement plugin */ {
+	background: lightYellow;
+	border: 1px #E6DB55 solid;
+	padding: 10px 10px 5px;
+	margin-bottom: 20px;
+}
+
+#page-wrap .alert p {
+	margin-bottom: 5px;
+}
+
+#sidebar {
+	position: relative;
+	float: right;
+	width: 230px;
+	margin: 100px 0 50px;
+}
+
+#sidebar section {
+	margin-bottom: 50px;
+}
+
+#sidebar h3 {
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	margin-bottom: 10px;
+}
+
+#sidebar p {
+	margin-left: 10px;
+}
+
+#sidebar section ol,
+#sidebar section ul {
+	margin: 0 0 0 35px;
+}
+
+#sidebar section li {
+	font-size: 1.3em;
+	margin-bottom: 0;
+}
+
+#sidebar section li a {
+	padding: 5px 5px 5px 0;
+	display: block;
+}
+
+#project-docs {
+	width: 1000px;
+}
+
+#project-docs ul {
+	margin-left: 0;
+}
+
+#project-docs ul li {
+	float: left;
+	width: 280px;
+	margin-left: 50px;
+	font-size: 1.6em;
+}
+
+#project-docs ul li a {
+	display: block;
+	width: 280px;
+	padding: 3px 0;
+}
+
+/* Design Post Types
+-------------------------------------------------------------------------------*/
+
+a#header-toggle {
+	position: absolute;
+	z-index: 100;
+	padding: 3px 5px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a#header-toggle:hover {
+	color: #fff;
+	background: #369;
+	-webkit-border-radius: 0 2px;
+	-webkit-border-bottom-right-radius: 2px;
+	-webkit-border-bottom-left-radius: 2px;
+	-moz-border-radius-bottomright: 2px;
+	-moz-border-radius-bottomleft: 2px;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+
+#bg-repeat  {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	z-index: 1;
+	overflow-x: hidden;
+}
+
+.single-pplan_designs #page-wrap {
+	width: 100%;
+	margin: 0;
+}
+
+.single-pplan_designs #page-wrap p {
+	margin-bottom: 0;
+}
+
+.single-pplan_designs img.aligncenter  {
+	display: block;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+}
+
+
+.single-pplan_designs img.alignright  {
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+
+
+.single-pplan_designs img.alignleft  {
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+
+
+.single-pplan_designs .alignright  {
+	float: right;
+}
+
+
+.single-pplan_designs .alignleft  {
+	float: left;
+}
+
+.single-pplan_designs .aligncenter,
+.single-pplan_designs div.aligncenter  {
+	display: block;
+	margin 0 auto;
+	padding: 0;
+}
+
+/* Milestones Slider
+-------------------------------------------------------------------------------*/
+
+#milestones section {
+	width: 230px;
+	float: left;
+	padding: 10px 8px 10px 0;
+	margin-right: 10px;
+	border-right: 1px solid #fbfbfb;
+}
+
+#milestones section.1 {
+	border-left: 1px solid #fbfbfb;
+}
+
+/* Statuses */
+
+#milestones section.complete {
+	opacity: .2;
+	filter:alpha(opacity=20); /* For IE8 and earlier */
+}
+
+/* Risk */
+
+#milestones section.risk .date {
+	color: orange;
+}
+
+/* Overdue */
+
+#milestones section.overdue .date {
+	color: red;
+}
+
+/* Current */
+
+#milestones section.current h2 {
+	background: yellow;
+}
+
+
+#milestones section h2 {
+	text-align: center;
+	font-family:  'Droid Serif', Georgia, Times, serif;
+	margin-bottom: 5px;
+}
+
+#milestones section h2 a {
+	color: #333;
+}
+
+#milestones section h3.date {
+	text-align: center;
+	font-style: italic;
+	font-weight: normal;
+	font-size: 1.2em;
+	margin-bottom: -14px;
+}
+
+#milestones img.icon {
+	width: 100px;
+	margin: 20px 60px 10px;
+}
+
+#milestones section p {
+	margin: 0 auto 5px;
+	width: 200px;
+}
+
+#milestones section .more {
+	font-size: 1.3em;
+	float: right;
+	margin-right: 20px;
+}
+
+/* Slider */
+
+.bx-next {
+	float: right;
+	position: relative;
+	left: 30px;
+	bottom: 175px;
+}
+
+.bx-prev {
+	float: left;
+	position: relative;
+	right: 30px;
+	bottom: 175px;
+}
+
+
+/* Articles & Pages
+-------------------------------------------------------------------------------*/
+
+/* WordPress Images and Captions */
+
+.wp-caption {
+	text-align: center;
+}
+
+.wp-caption img {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+}
+
+.wp-caption a img  {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+}
+ 
+p.wp-caption-text  {
+	font-size: 1.1em !important;
+	padding: 5px 4px;
+	margin-bottom: 0 !important;
+	font-family: 'Droid Serif', Georgia, Times, serif;
+}
+
+.wp-caption.alignleft {
+	margin: 0 10px 10px 0;
+}
+
+.wp-caption.alignright {
+	margin: 0 0 10px 10px;
+}
+
+img.aligncenter  {
+	display: block;
+	margin: 0 auto 10px;
+	padding: 10px;
+}
+
+
+img.alignright  {
+	margin: 0 0 10px 10px;
+	display: inline;
+	padding: 10px;
+}
+
+
+img.alignleft {
+	margin: 0 10px 10px 0;
+	display: inline;
+	padding: 10px;
+}
+
+img.portfolio {
+	padding: 10px;
+}	
+
+.alignright  {
+	float: right;
+}
+
+.alignleft  {
+	float: left;
+}
+
+.aligncenter,div.aligncenter  {
+	display: block;
+	margin: 0 auto 10px;
+}
+
+/* Comments
+-------------------------------------------------------------------------------*/
+
+#comment-wrap {
+	background: url(images/bg-grid.gif) repeat;
+	padding: 50px 0;
+}
+
+#comments {
+	margin: 0 auto;
+	width: 600px;
+	padding: 20px;
+	background: #fff;
+}
+
+#comments-title {
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	font-size: 2.5em;
+	font-weight: normal;
+	margin: 10px 0 20px;
+}
+
+ol.commentlist {
+	list-style: none;
+}
+
+ol.commentlist li {
+	margin: 10px 0 20px;
+}
+
+ol.commentlist li.comment div.comment-author,
+li.pingback p {
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	font-size: 1.4em;
+}
+
+ol.commentlist li.comment div.vcard cite.fn {
+	font-weight: bold;
+	font-style: normal;
+}
+
+ol.commentlist li.comment div.vcard span.says {
+	font-style: italic;
+}
+
+ol.commentlist li.comment div.vcard cite.fn a.url {}
+
+ol.commentlist li.comment div.vcard img.avatar {
+	float: left; 
+	margin: 0 10px 10px 0;
+}
+
+ol.commentlist li.comment div.comment-meta {
+	font-size: 1.2em;
+	margin: 5px 0 7px;
+}
+
+ol.commentlist li.comment div.comment-meta a {
+	color: #a5a5a5;
+}
+
+ol.commentlist li.comment p {
+	font-size: 1.3em;
+	line-height: 1.4;
+	margin-bottom: 15px;
+	padding-left: 52px;
+}
+
+ol.commentlist li.comment ul {}
+
+ol.commentlist li.comment div.reply a {
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	font-size: 1.2em;
+	font-weight: bold;
+	font-style: italic;
+	color: #a5a5a5;
+	padding-left: 52px;
+}
+
+ol.commentlist li.comment ul.children {
+	list-style: none;
+	margin-top: 30px;
+}
+
+ol.commentlist li.comment ul.children li.depth-2 {
+	margin-left: 20px;
+}
+
+ol.commentlist li.comment ul.children li.depth-3 {
+	margin-left: 20px;
+}
+
+ol.commentlist li.comment ul.children li.depth-4 {
+	margin-left: 20px;
+}
+
+ol.commentlist li.comment ul.children li.depth-5 {
+	margin-left: 20px;
+}
+
+/* Comment Form */
+
+#reply-title {
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	font-size: 2em;
+	padding-top: 10px;
+	margin-bottom: 10px;
+	font-weight: normal;
+}
+
+#respond p,
+.wpcf7-form p {
+	margin-bottom: 10px;
+	font-size: 1.2em;
+	line-height: 1.3;
+}
+
+#respond label,
+.wpcf7-form label {
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	font-style: italic;
+}
+
+#respond label {
+	font-size: 1.2em;	
+}
+
+span.required {
+	color: #ec3527;
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	font-size: 1em;
+}
+
+.comment-form-author span.required,
+.comment-form-email span.required {
+	margin-right: 400px;
+}
+
+.comment-form-url label,
+.comment-form-comment label,
+.wpcf7-form label {
+	margin-right: 400px;
+}
+
+#respond input,
+.wpcf7-form input {
+	margin: 5px 0 10px;
+	padding: 3px;
+	width: 162px;
+	border: 1px solid #ccc;
+	font-family: 'Droid Sans', Georgia, Times, serif;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#respond input {
+	font-size: 1.2em;
+}
+
+.wpcf7-form input {
+	font-size: .9em;
+}
+
+#respond textarea,
+.wpcf7-form textarea {
+	margin-top: 5px;
+	padding: 3px;
+	width: 100%;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font-family: 'Droid Sans', Arial, Helvetica, sans-serif;
+}
+
+#respond textarea {
+	font-size: 1.2em;
+}
+
+.wpcf7-form textarea {
+	font-size: .9em;
+}
+
+#respond input#submit,
+.wpcf7-form input#submit {
+	color: #fff;
+	font-family: 'Droid Sans', Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-style: normal;
+	background: #369;
+	padding: 5px 10px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: none;
+}
+
+#respond input#submit {
+	font-size: 1.2em;
+}
+
+.wpcf7-form input#submit {
+	font-size: 1em;
+}
+
+#respond input#submit:active,
+.wpcf7-form input#submit:active {
+	position: relative;
+	top: 1px;
+}
+
+small a#cancel-comment-reply-link {
+	font-size: 1.2em;
+}
+
+a#cancel-comment-reply-link:before {
+	content: 'or '
+}
+
+span.wpcf7-list-item {
+	display: list-item;
+	list-style-type: none;
+	margin-left: 0;
+}
+
+span.wpcf7-list-item input[type="checkbox"],
+input.wpcf7-acceptance {
+	width: auto;
+	position: relative;
+	top: 4px;
+	margin-right: 3px;
+} 
+
+input.wpcf7-acceptance {
+	margin-left: .5em;
+}
+
+input.wpcf7-file {
+	width: auto;
+	border: none;
+}
+
+/* Requires Subscribe to Comments Plugin */
+
+input#subscribe,
+input#get_gravatar {
+	position: relative;
+	top: 7px;
+	margin-right: 3px;
+}
+
+.wrap h2 {
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	font-size: 2.8em;
+	margin-bottom: 20px;
+}
+
+.wrap legend {
+	font-family: 'Droid Serif', Georgia, Times, serif;
+	font-size: 2em;
+	margin-bottom: 20px;
+}
+
+.blog .dropdown {
+	display: none;
+}
